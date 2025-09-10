@@ -1,0 +1,44 @@
+So LC - 1
+Two Sum
+
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+Soln -> 
+
+Given -    array nums, a target
+To do -    Add two number of array which equal to target and return both index of no
+Approach - make a pair which contain index and value
+           then push them into it
+           then sort them (like in binary search, I am two-pointer approach)
+           initializing i=0 and j = n-1(start and end)
+           and then rather than mid using pairsum = arr[i].first + arr[j].first
+           and binary search
+Solution-  class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int n = nums.size();
+        vector<pair<int,int>> arr;
+        for (int i = 0; i < n; i++) {
+            arr.push_back({nums[i], i});
+        }
+        
+        sort(arr.begin(), arr.end());
+        
+        int i = 0, j = n - 1;
+        while (i < j) {
+            int ps = arr[i].first + arr[j].first;
+            if (ps == target) {
+                return {arr[i].second, arr[j].second};
+            } else if (ps < target) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+        return {};
+    }
+};
