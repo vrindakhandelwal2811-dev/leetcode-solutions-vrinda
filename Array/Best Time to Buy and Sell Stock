@@ -1,0 +1,32 @@
+So LC - 121
+Best Time to Buy and Sell Stock
+
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+Soln -> 
+
+Given -    array prices
+To do -    One day to buy and one day to sold with max profit 
+Approach - two things 
+              1. BestBuy 
+              2. MaxProfit
+           so in a loop maxprofit is when prices[i]-bestbuy is maximum from all
+           and bestbuy is minimum in the loop
+           remembering bestbuy come first and maxprofit after
+Solution-  class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+      int bb = prices[0],mp = 0;
+
+      for(int i = 0; i<prices.size() ; i++){
+       
+            mp = max(mp,prices[i]-bb);
+            bb = min( bb, prices[i]);
+        
+      } return mp; 
+    }
+};
