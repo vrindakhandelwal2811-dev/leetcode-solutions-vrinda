@@ -1,1 +1,26 @@
+So LC - 53
+Maximum Subarray
+
+Given an integer array nums, find the subarray with the largest sum, and return its sum.
+
+Soln -> 
+
+Given -    a array that's it
+To do -    find a subarray with maximum sum
+Approach - two things 
+              1. maxsum
+              2. currsum
+           so in a loop currsum is when max of either nums[i] or currsum + nums[i] 
+           and follow with maxsum which is the max of maxsum and currsum
+Solution-  class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int maxsum = nums[0], currsum = nums[0];
+
+        for(int i = 1;i< nums.size(); i++){
+            currsum = max(nums[i], currsum + nums[i]);
+            maxsum = max(maxsum,currsum);
+        }return maxsum;
+    }
+};
 
