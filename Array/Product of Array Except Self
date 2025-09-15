@@ -1,0 +1,40 @@
+So LC - 238
+Product of Array Except Self
+
+Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+You must write an algorithm that runs in O(n) time and without using the division operation.
+
+Soln -> 
+
+Given -    a array that's it  
+To do -    multiplying all the no in the array except itself
+           for ex you have 1 2 3 in a array
+           for 1 it would be 6, for 2 it would be 3 and for 3 it would be 2
+           so 6 3 2 and is what I need to find
+Approach - the beat say is before and after right the no multiplying so I am using prefix and suffix
+           where prefix multiply and stop before i and suffix from end to before n stop and and they 
+           multiply and tada we crack it.
+Solution - class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+       int n = nums.size();
+
+       
+        vector<int> ans(n, 1);
+
+        int prefix = 1;
+        for(int i =0 ; i<n ; i++){
+            ans[i] = prefix;
+            prefix *= nums[i];
+        }
+
+        int suffix = 1;
+        for(int i = n-1 ; i>=0 ; i--){
+            ans[i] *= suffix;
+            suffix *= nums[i];
+       }return ans; 
+    }
+};
